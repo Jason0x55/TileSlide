@@ -22,6 +22,19 @@ public class Frame {
     scramble();
   }
 
+  public boolean isSolved() {
+  boolean solved = false;
+    for (int i = 0; i < tiles.length * tiles.length; i++) {
+        if (tiles[i / size][i % size] != null && tiles[i / size][i % size].getNumber() != i) {
+          solved = false;
+          break;
+        } else {
+          solved = true;
+        }
+    }
+    return solved;
+  }
+
   public void reset() {
     copy(start, tiles);
     moves = 0;
