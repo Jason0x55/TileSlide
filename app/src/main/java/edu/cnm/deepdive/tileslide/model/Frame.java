@@ -75,6 +75,7 @@ public class Frame {
         && tiles[toRow][toCol] == null
     ) {
       swap(tiles, fromRow, fromCol, toRow, toCol);
+      moves++;
       return true;
     }
     return false;

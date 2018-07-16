@@ -22,6 +22,7 @@ public class FrameAdapter extends ArrayAdapter<Tile> {
   private Bitmap noTileImage;
   private Frame frame;
   private Tile[] tiles;
+  private Bitmap bitmap;
 
 
   public FrameAdapter(@NonNull Context context, @NonNull Frame frame) {
@@ -41,6 +42,7 @@ public class FrameAdapter extends ArrayAdapter<Tile> {
     tiles = new Tile[size * size];
     copyModelTiles();
     addAll(tiles);
+    this.bitmap = bitmap;
     sliceBitmap(bitmap);
   }
 
@@ -93,7 +95,7 @@ public class FrameAdapter extends ArrayAdapter<Tile> {
 
   private void sliceBitmap() {
     Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.reddit);
-    Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+    bitmap = ((BitmapDrawable) drawable).getBitmap();
     tileImages = new Bitmap[size * size];
     int imageWidth = bitmap.getWidth();
     int imageHeight = bitmap.getHeight();
@@ -107,4 +109,11 @@ public class FrameAdapter extends ArrayAdapter<Tile> {
     noTileImage.eraseColor(ContextCompat.getColor(getContext(), R.color.puzzleBackground));
   }
 
+  public Bitmap getBitmap() {
+    return bitmap;
+  }
+
+  public void setBitmap(Bitmap bitmap) {
+    this.bitmap = bitmap;
+  }
 }

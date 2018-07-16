@@ -9,29 +9,35 @@
 
   <TextView
     android:id="@+id/puzzle_size_label"
-    android:text="Model size (2-6): "
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:text="Size: "
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="@+id/puzzle_size_text"/>
+    app:layout_constraintRight_toLeftOf="@+id/puzzle_size_slider"/>
 
-  <EditText
-    android:id="@+id/puzzle_size_text"
+
+  <SeekBar
+    android:id="@+id/puzzle_size_slider"
     android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_height="wrap_content"
+    android:max="6"
+    android:progress="3"
     app:layout_constraintLeft_toRightOf="@id/puzzle_size_label"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintRight_toRightOf="parent"/>
 
   <ImageView
     android:id="@+id/puzzle_image"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
     android:layout_marginTop="16dp"
     android:layout_marginLeft="16dp"
+    android:scaleType="fitCenter"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/puzzle_size_label"
+    app:layout_constraintTop_toBottomOf="@id/puzzle_size_slider"
+    app:layout_constraintBottom_toTopOf="@+id/current_image"
+    app:layout_constraintRight_toRightOf="parent"
     app:srcCompat="@android:color/background_light"/>
 
   <Button
@@ -43,4 +49,17 @@
     android:text="Select Image"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"/>
+
+  <ImageView
+    android:id="@+id/current_image"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/puzzle_image"
+    app:layout_constraintRight_toLeftOf="@id/select_image_button"
+    android:scaleType="fitCenter"
+    app:srcCompat="@android:color/background_light"/>
 </android.support.constraint.ConstraintLayout>
