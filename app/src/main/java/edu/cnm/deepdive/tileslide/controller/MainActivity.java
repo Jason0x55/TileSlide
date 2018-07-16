@@ -1,22 +1,20 @@
 package edu.cnm.deepdive.tileslide.controller;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.Toast;
 import edu.cnm.deepdive.tileslide.R;
 import edu.cnm.deepdive.tileslide.model.Frame;
-import edu.cnm.deepdive.tileslide.model.Tile;
 import edu.cnm.deepdive.tileslide.view.FrameAdapter;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-  private static int PUZZLE_SIZE = 3;
+  private static int PUZZLE_SIZE = 4;
 
   private Frame frame;
   private FrameAdapter adapter;
@@ -40,7 +38,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Toast.makeText(this, "Solved!", Toast.LENGTH_LONG).show();
       }
     } else {
-      Toast.makeText(this, "Not a valid move!", Toast.LENGTH_SHORT).show();
+      Toast toast = Toast.makeText(this, "Not a valid move!", Toast.LENGTH_SHORT);
+      toast.setGravity(Gravity.CENTER, 0, 0);
+      toast.show();
     }
   }
 
