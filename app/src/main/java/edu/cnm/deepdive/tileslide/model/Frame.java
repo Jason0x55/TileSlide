@@ -25,7 +25,8 @@ public class Frame {
   public boolean isSolved() {
   boolean solved = false;
     for (int i = 0; i < tiles.length * tiles.length; i++) {
-        if (tiles[i / size][i % size] != null && tiles[i / size][i % size].getNumber() != i) {
+        if (tiles[i / size][i % size] != null &&
+            tiles[i / size][i % size].getNumber() != i) {
           solved = false;
           break;
         } else {
