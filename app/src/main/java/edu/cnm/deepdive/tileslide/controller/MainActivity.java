@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import edu.cnm.deepdive.tileslide.R;
@@ -38,10 +37,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     setupUI();
+    createPuzzle();
+    setupButtons();
+  }
+
+  private void setupUI() {
+    moveCount = findViewById(R.id.move_count);
+    resetPuzzle = findViewById(R.id.reset_button);
+    customPuzzle = findViewById(R.id.custom_puzzle_button);
+    newPuzzle = findViewById(R.id.new_puzzle_button);
+    tileGrid = findViewById(R.id.tile_grid);
     tileGrid.setNumColumns(PUZZLE_SIZE);
     tileGrid.setOnItemClickListener(this);
-    createPuzzle();
+  }
 
+  private void setupButtons() {
     customPuzzle.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -67,18 +77,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
       @Override
       public void onClick(View v) {
         createPuzzle(adapter.getBitmap());
-        moveCount.setText(String.valueOf(frame.getMoves()));
-        puzzleSolved = false;
       }
     });
-  }
-
-  private void setupUI() {
-    tileGrid = findViewById(R.id.tile_grid);
-    moveCount = findViewById(R.id.move_count);
-    resetPuzzle = findViewById(R.id.reset_button);
-    customPuzzle = findViewById(R.id.custom_puzzle_button);
-    newPuzzle = findViewById(R.id.new_puzzle_button);
   }
 
   @Override
@@ -106,11 +106,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
   }
 
   private void createPuzzle(Bitmap bitmap) {
+    puzzleSolved = false;
     tileGrid.setNumColumns(PUZZLE_SIZE);
     tileGrid.setOnItemClickListener(this);
     frame = new Frame(PUZZLE_SIZE, new Random());
     adapter = new FrameAdapter(this, frame, bitmap);
     tileGrid.setAdapter(adapter);
+    moveCount.setText(String.valueOf(frame.getMoves()));
   }
 
   @Override
@@ -118,9 +120,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     super.onActivityResult(requestCode, resultCode, data);
 
     if (resultCode == RESULT_OK && requestCode == 7777) {
-      ImageView imageView = (ImageView) findViewById(R.id.puzzle_image);
       Bitmap bitmap;
-
       byte[] byteArray = data.getByteArrayExtra("image");
       bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
       PUZZLE_SIZE = data.getIntExtra("size", 3);
