@@ -26,26 +26,17 @@
     android:id="@+id/custom_puzzle_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:text="Custom Puzzle"
+    android:layout_marginBottom="8dp"
+    android:text="@string/custom_puzzle"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintRight_toRightOf="parent"/>
-
-  <ImageView
-    android:id="@+id/imageView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:srcCompat="@android:color/black"/>
 
   <Button
     android:id="@+id/reset_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:text="Reset Puzzle"
+    android:layout_marginBottom="8dp"
+    android:text="@string/reset_puzzle"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintRight_toLeftOf="@+id/custom_puzzle_button"/>
 
@@ -53,17 +44,26 @@
     android:id="@+id/new_puzzle_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
+    android:layout_marginBottom="8dp"
     android:text="@string/new_puzzle"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintRight_toLeftOf="@id/reset_button"/>
 
   <TextView
+    android:id="@+id/move_count_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Moves"
+    android:layout_marginBottom="2dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/move_count"/>
+
+  <TextView
     android:id="@+id/move_count"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"/>
+    android:layout_marginBottom="8dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -4,4 +4,6 @@
   <string name="model_size">Size (2-6):</string>
   <string name="select_image">Select Image</string>
   <string name="create_puzzle">Create Puzzle</string>
+  <string name="custom_puzzle">Custom Puzzle</string>
+  <string name="reset_puzzle">Reset Puzzle</string>
 </resources>

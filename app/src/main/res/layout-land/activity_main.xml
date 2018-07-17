@@ -19,8 +19,43 @@
     android:padding="@dimen/cell_spacing"
     app:layout_constraintDimensionRatio="1:1"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintRight_toRightOf="@+id/side_layout"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"/>
 
+  <LinearLayout
+    android:id="@+id/side_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:orientation="vertical">
+
+  <Button
+    android:id="@+id/reset_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:text="@string/reset_puzzle"/>
+
+  <Button
+    android:id="@+id/new_puzzle_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:text="@string/new_puzzle"/>
+
+    <Button
+      android:id="@+id/custom_puzzle_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:text="@string/custom_puzzle"/>
+
+  <TextView
+    android:id="@+id/move_count"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"/>
+  </LinearLayout>
 </android.support.constraint.ConstraintLayout>
