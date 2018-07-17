@@ -23,14 +23,13 @@
     app:layout_constraintTop_toTopOf="parent"/>
 
   <Button
-    android:id="@+id/new_puzzle_button"
+    android:id="@+id/custom_puzzle_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
-    android:text="@string/new_puzzle"
+    android:text="Custom Puzzle"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    tools:layout_editor_absoluteX="287dp"/>
+    app:layout_constraintRight_toRightOf="parent"/>
 
   <ImageView
     android:id="@+id/imageView"
@@ -39,8 +38,7 @@
     android:layout_marginBottom="16dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:srcCompat="@android:color/black"
-    tools:layout_editor_absoluteX="8dp"/>
+    app:srcCompat="@android:color/black"/>
 
   <Button
     android:id="@+id/reset_button"
@@ -49,7 +47,16 @@
     android:layout_marginBottom="16dp"
     android:text="Reset Puzzle"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintRight_toLeftOf="@id/new_puzzle_button"/>
+    app:layout_constraintRight_toLeftOf="@+id/custom_puzzle_button"/>
+
+  <Button
+    android:id="@+id/new_puzzle_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:text="@string/new_puzzle"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintRight_toLeftOf="@id/reset_button"/>
 
   <TextView
     android:id="@+id/move_count"
@@ -57,7 +64,6 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    tools:layout_editor_absoluteX="109dp"/>
+    app:layout_constraintLeft_toLeftOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -11,7 +11,11 @@
     android:id="@+id/puzzle_size_label"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Size: "
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:text="@string/model_size"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toLeftOf="@+id/puzzle_size_slider"/>
@@ -21,44 +25,77 @@
     android:id="@+id/puzzle_size_slider"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:max="6"
-    android:progress="3"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:max="4"
+    android:progress="2"
     app:layout_constraintLeft_toRightOf="@id/puzzle_size_label"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintRight_toRightOf="parent"/>
+
+  <TextView
+    android:id="@+id/image_preview_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="New Image Preview"
+    app:layout_constraintTop_toBottomOf="@id/puzzle_size_label"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/puzzle_image"/>
 
   <ImageView
     android:id="@+id/puzzle_image"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginLeft="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
     android:scaleType="fitCenter"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/puzzle_size_slider"
+    app:layout_constraintTop_toBottomOf="@id/image_preview_label"
     app:layout_constraintBottom_toTopOf="@+id/current_image"
     app:layout_constraintRight_toRightOf="parent"
     app:srcCompat="@android:color/background_light"/>
 
   <Button
+    android:id="@+id/create_puzzle_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:text="@string/create_puzzle"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
+  <Button
     android:id="@+id/select_image_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="76dp"
-    android:layout_marginRight="16dp"
-    android:text="Select Image"
-    app:layout_constraintRight_toRightOf="parent"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:text="@string/select_image"
+    app:layout_constraintRight_toLeftOf="@id/create_puzzle_button"
     app:layout_constraintBottom_toBottomOf="parent"/>
+
+  <TextView
+    android:id="@+id/current_image_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Current Image"
+    app:layout_constraintTop_toBottomOf="@id/puzzle_image"
+    app:layout_constraintBottom_toTopOf="@+id/current_image"
+    app:layout_constraintLeft_toLeftOf="parent"/>
 
   <ImageView
     android:id="@+id/current_image"
     android:layout_width="0dp"
     android:layout_height="100dp"
-    android:layout_marginBottom="16dp"
-    android:layout_marginLeft="16dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="8dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/puzzle_image"
+    app:layout_constraintTop_toBottomOf="@id/current_image_label"
     app:layout_constraintRight_toLeftOf="@id/select_image_button"
     android:scaleType="fitCenter"
     app:srcCompat="@android:color/background_light"/>

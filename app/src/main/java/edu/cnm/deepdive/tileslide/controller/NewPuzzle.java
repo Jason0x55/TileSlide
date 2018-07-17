@@ -26,7 +26,10 @@ public class NewPuzzle extends AppCompatActivity {
   private ImageView newImage;
   private ImageView currentImage;
   private Button imageButton;
+  private Button createPuzzleButton;
   private SeekBar puzzleSlider;
+
+  private boolean newImageSet = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +45,10 @@ public class NewPuzzle extends AppCompatActivity {
     imageButton = findViewById(R.id.select_image_button);
     currentImage = findViewById(R.id.current_image);
     puzzleSlider = findViewById(R.id.puzzle_size_slider);
+    createPuzzleButton = findViewById(R.id.create_puzzle_button);
     intent = getIntent();
-    Bitmap bitmap;
 
-    byte[] byteArray = intent.getByteArrayExtra("image");
-    bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-    Drawable drawable = ContextCompat.getDrawable(this, R.drawable.android_robot_circle);
-    newImage.setImageDrawable(drawable);
-    currentImage.setImageBitmap(bitmap);
+    setupImages();
     imageButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -59,6 +58,29 @@ public class NewPuzzle extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select image"), 1);
       }
     });
+
+    createPuzzleButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        intent.putExtra("size", puzzleSlider.getProgress() + 2);
+        if (!newImageSet) {
+          Drawable drawable = ContextCompat.getDrawable(NewPuzzle.this, R.drawable.android_robot_circle);
+          Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+          setImage(bitmap);
+        }
+        setResult(RESULT_OK, intent);
+        finish();
+      }
+    });
+  }
+
+  private void setupImages() {
+    Bitmap bitmap;
+    byte[] byteArray = intent.getByteArrayExtra("image");
+    bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+    Drawable drawable = ContextCompat.getDrawable(this, R.drawable.android_robot_circle);
+    newImage.setImageDrawable(drawable);
+    currentImage.setImageBitmap(bitmap);
   }
 
   @Override
@@ -75,17 +97,20 @@ public class NewPuzzle extends AppCompatActivity {
         bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imagePath);
         newImage.setImageBitmap(
             MediaStore.Images.Media.getBitmap(this.getContentResolver(), imagePath));
+        newImageSet = true;
 
       } catch (IOException e) {
         e.printStackTrace();
       }
     }
-      ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-      bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
-      byte[] byteArray = byteStream.toByteArray();
-      intent.putExtra("image", byteArray);
-      intent.putExtra("size", puzzleSlider.getProgress());
-      setResult(RESULT_OK, intent);
+    setImage(bitmap);
+  }
+
+  private void setImage(Bitmap bitmap) {
+    ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
+    byte[] byteArray = byteStream.toByteArray();
+    intent.putExtra("image", byteArray);
   }
 
 }
